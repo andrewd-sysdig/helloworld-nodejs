@@ -17,6 +17,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      
+    - name: Lint Dockerfile with Hadolint
+      uses: hadolint/hadolint-action@master
+      with:
+        dockerfile: "Dockerfile"
     
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.run_number }} --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
