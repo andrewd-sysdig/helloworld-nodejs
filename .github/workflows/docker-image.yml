@@ -31,6 +31,7 @@ jobs:
           image-tag: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
           sysdig-secure-token: ${{ secrets.SECURE_API_TOKEN }}
           sysdig-secure-url: https://app.au1.sysdig.com
+          extra-parameters: --console-log
 
     - name: Upload SARIF file
       if: success() || failure() 
